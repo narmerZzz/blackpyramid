@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黒王墓</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  html { min-height: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #dcece9;
+    background-image:
+      linear-gradient(
+        rgba(200, 230, 240, 0.65),
+        rgba(200, 230, 240, 0.65)
+      ),
+      url("images/cover.jpg");
+    background-repeat: repeat;
+    background-size: 600px 337.5px;
+    background-position: left top;
+    background-attachment: fixed;
+    color: #203b3c;
+    text-align: center;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 42px 16px 70px; }
+  .intro { font-size: 13px; margin: 0 0 32px; }
+  hr { border: 0; border-top: 1px solid #779d99; max-width: 520px; margin: 24px auto; }
+  h2 { color: #000000; font-size: 18px; letter-spacing: 0em; }
+  nav { display: flex; flex-direction: column; align-items: center; gap: 13px; margin: 25px auto 35px; }
+  a { color: #0000ee; font-size: 17px; font-weight: 400; }
+  a:visited { color: #551a8b; }
+  a:hover { color: #df284e; }
+  footer { font-size: 12px; }
+  /* smartphone */
+  @media (max-width: 600px) {
+    body {
+      background-size: 100% auto;
+      background-repeat: repeat-y;
+      background-position: center top;
+    }
+  }
+</style>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/crt.css">
+</head>
+<body>
+<main>
+  <h1>黒王墓</h1>
+  <p class="intro">やっつけホームページ</p>
+  <hr>
+  <h2>CONTENTS</h2>
+  <nav aria-label="コンテンツ">
+    <a href="session-log.html">木人作者KP企画／卓報告</a>
+    <a href="https://tuxedo.booth.pm/" target="_blank" rel="noopener noreferrer">BOOTH</a>
+    <a href="https://www.foriio.com/narmer" target="_blank" rel="noopener noreferrer">ILLUSTLATION</a>
+  </nav>
+  <hr>
+  <footer>Since 2026<br>Best viewed with your favorite browser.</footer>
+  <div class="footer-icon">
+  <img src="images/icon_dot.png" alt="KP駒">
+  </div>
+</main>
+</body>
+</html>
