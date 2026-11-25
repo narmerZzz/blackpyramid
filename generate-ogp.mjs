@@ -2,7 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const baseUrl = "https://narmerZzz.github.io/";
+const baseUrl = "https://narmerzzz.github.io/blackpyramid/";
 
 const sessions = JSON.parse(
   fs.readFileSync("sessions.json", "utf8")
