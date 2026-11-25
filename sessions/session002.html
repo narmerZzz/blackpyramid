@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+<base href="https://narmerzzz.github.io/blackpyramid/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="木人">
+<meta property="og:description" content="TRPG SESSION LOG">
+<meta property="og:url" content="https://narmerzzz.github.io/blackpyramid/sessions/session002.html">
+<meta property="og:image" content="https://narmerzzz.github.io/blackpyramid/images/20261124_erikohukoguma.png">
+<meta name="twitter:image" content="https://narmerzzz.github.io/blackpyramid/images/20261124_erikohukoguma.png">
+<meta name="twitter:card" content="summary_large_image">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>卓報告</title>
+  <link rel="stylesheet" href="css/window.css">
+  <style>
+  /* Scenario title */
+  .content h1 {
+    font-size: clamp(18px, 3vw, 24px);
+    margin: 3px 0 16px;
+    color: #000;
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  /* Result */
+  .result {
+    font-weight: bold;
+  }
+
+  /* Screenshot */
+  .screenshot {
+    display: block;
+    max-width: 100%;
+    width: min(530px, 100%);
+    height: auto;
+    margin: 18px auto 12px;
+    border: 1px solid #555;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    max-width: 500px;
+    min-height: 250px;
+    margin: 20px auto;
+    background: #c0c0c0;
+    border: 2px inset #808080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+  }
+
+  /* Review */
+  .review {
+    max-width: 580px;
+    margin: 12px auto 0;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
+
+  .review h2 {
+    font-size: 15px;
+    margin: 14px 0 5px;
+  }
+
+  .review p {
+    white-space: pre-wrap;
+  }
+
+  .review #comment {
+    text-align: left;
+    max-width: 480px;
+    margin: 12px auto;
+    line-height: 1.9;
+  }
+  </style>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <section class="window" id="window" aria-label="セッションログのウィンドウ">
+    <div class="titlebar"><span>▣ SESSION LOG</span><button class="close" type="button" id="close"
+        aria-label="ウィンドウを閉じる">×</button></div>
+    <div class="menu">File　 Edit　 View　 Help</div>
+    <main class="content">
+      <h1 id="scenario-title">読み込み中...</h1>
+      <p><span id="date"></span></p>
+      <p><b>KP &gt; </b><span id="kp"></span></p>
+      <p><b>PL &gt; </b><span id="pl"></span></p>
+      <p><b>PC &gt; </b><span id="pc"></span></p>
+      <p class="result"><span id="result"></span></p>
+      <div id="image-placeholder" class="image-placeholder">[ 画像準備中 ]</div>
+      <img class="screenshot hidden" id="screenshot" alt="セッションのスクリーンショット">
+      <section class="review">
+        <h2>&gt;&gt; comments &gt;&gt;</h2>
+        <p id="comment"></p>
+        <p id="fuse-wrap" class="hidden">
+          <a id="fuse-link" href="#" target="_blank" rel="noopener noreferrer">ふせったー　※ネタバレあり※</a>
+        </p>
+      </section>
+      <p><a href="session-log.html">← 卓報告一覧へ</a></p>
+    </main>
+    <div class="status">SESSION LOG　｜　RESULT</div>
+  </section>
+  <div id="closed" class="closed hidden">
+    <p>卓報告を閉じました。</p><button id="reopen" class="winbutton" type="button">ウィンドウを開く</button>
+    <p><a href="session-log.html">← 卓報告一覧へ</a></p>
+  </div>
+  <script>
+    (async () => {
+      const id = "session002";
+      const title = document.getElementById('scenario-title');
+      try {
+        const response = await fetch('./sessions.json');
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const sessions = await response.json();
+        const session = sessions.find(item => item.id === id);
+        if (!session) throw new Error('該当するセッションがありません');
+        document.title = session.title + ' - セッションログ';
+        title.textContent = `◤ ${session.title} ◢`;
+        document.getElementById('date').textContent = session.date.replaceAll('-', '/');
+        document.getElementById('kp').textContent = session.kp;
+        document.getElementById('pl').textContent = (session.pl || []).join('／');
+        document.getElementById('pc').textContent = (session.pc || []).join('／');
+        document.getElementById('result').textContent = session.result;
+        document.getElementById('comment').textContent = session.comment || '';
+        const fuseWrap = document.getElementById('fuse-wrap');
+        const fuseLink = document.getElementById('fuse-link');
+
+        if (session.fuse) {
+          try {
+            const url = new URL(session.fuse);
+
+            if (
+              url.protocol === 'https:' &&
+              [
+                'fusetter.com',
+                'www.fusetter.com',
+                'fse.tw'
+              ].includes(url.hostname)
+            ) {
+              fuseLink.href = url.href;
+              fuseWrap.classList.remove('hidden');
+            }
+          } catch (error) {
+            console.warn('ふせったーのURLが不正です', error);
+          }
+        }
+
+        if (session.image) {
+          const img = document.getElementById('screenshot');
+          img.onload = () => { img.classList.remove('hidden'); document.getElementById('image-placeholder').classList.add('hidden') };
+          img.src = session.image;
+        }
+      } catch (error) {
+        title.textContent = '読み込めませんでした';
+        document.getElementById('comment').textContent = error.message + '。GitHub Pages上で確認してください。';
+      }
+    })();
+  </script>
+  <script src="js/window.js"></script>
+</body>
+</html>
