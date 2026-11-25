@@ -15,14 +15,38 @@ body {
 
 /* title */
 h1 {
-  color: #0000dd;
-  font-family: "MS PGothic", "‚l‚r ‚oƒSƒVƒbƒN", sans-serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(30px, 7vw, 46px);
-  letter-spacing: 0;
-  margin: 0 0 10px;
-  text-shadow: 1px 1px 0 #a9c5ff;
+    font-family: "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(30px, 7vw, 46px);
+    letter-spacing: 0;
+    margin: 0 0 10px;
+    color: blue;
+    text-shadow: 1px 1px 0 #a9c5ff;
+}
+
+h1.rainbow-title {
+    background: linear-gradient(
+        to right,
+        #e60000,
+        #f39800,
+        #fff100,
+        #009944,
+        #0068b7,
+        #1d2088,
+        #920783
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    width: fit-content;
+    margin-inline: auto;
+    padding-right: 0.15em;
+
+    text-shadow: none;
+    filter: drop-shadow(1px 1px 0 #205ed1);
 }
 
 /* icon */

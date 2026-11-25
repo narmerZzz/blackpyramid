@@ -6,48 +6,41 @@
 <title>木人作者KP企画／卓報告</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/crt.css">
+<link rel="stylesheet" href="css/page.css">
 <style>
- body {
-   margin: 0;
-   min-height: 100vh;
-   background-color: #dcece9;
-   background-image:
-     linear-gradient(
-       rgba(200, 230, 240, 0.65),
-       rgba(200, 230, 240, 0.65)
-     ),
-     url("images/cover.jpg");
-   background-repeat: repeat;
-   background-size: 600px 337.5px;
-   background-position: left top;
-   background-attachment: fixed;
-   color: #203b3c;
-   text-align: center;
- }
- .table-wrap { max-width:100%; overflow-x:auto; margin:24px auto; }
- table { margin:0 auto; border:1px solid #444; border-spacing:2px; background:#fff; }
- th,td { border:2px inset #999; padding:0 2px; background:#fff; text-align:left; line-height:1.25; vertical-align:middle; white-space:nowrap; }
- th { font-weight:bold; }
- a { color:#00e; } a:visited {color:#551a8b;}
- main {
-  max-width: 760px;
+.table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 24px auto;
+}
+
+table {
   margin: 0 auto;
-  padding: 42px 16px 70px;
- }
- /* smartphone */
- @media (max-width: 600px) {
-   body {
-     background-size: 100% auto;
-     background-repeat: repeat-y;
-     background-position: center top;
-   }
- }
+  border: 1px solid #444;
+  border-spacing: 2px;
+  background: #fff;
+}
+
+th,
+td {
+  border: 2px inset #999;
+  padding: 0 2px;
+  background: #fff;
+  text-align: left;
+  line-height: 1.25;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+th {
+  font-weight: bold;
+} 
 </style>
 </head>
 <body>
 <main>
 <h1>木人作者KP企画／卓報告</h1>
-<p>SESSION LOG</p>
+<p>クリックしてもネタバレはなし</p>
 <div class="table-wrap">
 <table aria-label="セッションログ一覧">
 <thead><tr><th>DATE</th><th>TITLE</th><th>KP／PL</th></tr></thead>
@@ -64,13 +57,18 @@
     const sessions = await response.json();
     if (!Array.isArray(sessions)) throw new Error('JSONは配列にしてください');
     tbody.replaceChildren();
+    const isLocal = ['localhost', '127.0.0.1']
+          .includes(location.hostname);
     for (const session of [...sessions].sort((a,b) => b.date.localeCompare(a.date))) {
       const tr = document.createElement('tr');
       const date = document.createElement('td');
       date.textContent = session.date.replaceAll('-', '/');
       const title = document.createElement('td');
       const link = document.createElement('a');
-      link.href = 'sessions/' + encodeURIComponent(session.id) + '.html';
+      const url = isLocal
+          ? `session-detail.html?id=${encodeURIComponent(session.id)}`
+          : `sessions/${encodeURIComponent(session.id)}.html`;
+      link.href = url;      
       link.textContent = session.title;
       title.append(link);
       const members = document.createElement('td');

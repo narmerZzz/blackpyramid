@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Desktop */
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #000;
+  display: grid;
+  place-items: center;
+  padding: 14px;
+
+  background-color: #02030d;
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #fff 99%, transparent),
+    radial-gradient(1px 1px at 90px 80px, #aaccff 99%, transparent),
+    radial-gradient(2px 2px at 150px 120px, #fff 99%, transparent),
+    radial-gradient(1px 1px at 230px 40px, #8899cc 99%, transparent),
+    radial-gradient(1px 1px at 300px 170px, #fff 99%, transparent),
+    radial-gradient(2px 2px at 370px 60px, #ccdfff 99%, transparent);
+  background-size: 420px 230px;
+  background-repeat: repeat;
+}
+
+/* Window */
+.window {
+  width: min(760px, 100%);
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #fff #404040 #404040 #fff;
+  box-shadow: 1px 1px 0 #000;
+  padding: 3px;
+}
+
+.titlebar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 3px 3px 7px;
+  min-height: 29px;
+  font-size: 15px;
+}
+
+.menu {
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+.content {
+  margin: 3px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #808080 #fff #fff #808080;
+  padding: 16px 14px 20px;
+  text-align: center;
+  font-family: "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+  font-size: 13px;
+}
+
+.content p {
+  margin: 7px 0;
+  line-height: 1.6;
+}
+
+.status {
+  font-size: 12px;
+  padding: 6px 9px;
+  border: 1px solid;
+  border-color: #777 #fff #fff #777;
+  margin: 4px 3px 1px;
+}
+
+/* Buttons */
+.close {
+  font-size: 17px;
+  line-height: 19px;
+  width: 24px;
+  height: 23px;
+  color: #000;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #fff #404040 #404040 #fff;
+  cursor: pointer;
+  padding: 0;
+}
+
+.winbutton {
+  padding: 5px 15px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #fff #404040 #404040 #fff;
+  cursor: pointer;
+  font: inherit;
+}
+
+.close:active,
+.winbutton:active {
+  border-color: #404040 #fff #fff #404040;
+}
+
+/* Closed window */
+.closed {
+  text-align: center;
+  background: #c0c0c0;
+  padding: 20px;
+  border: 2px solid;
+  border-color: #fff #444 #444 #fff;
+  max-width: 90vw;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Misaki Gothic */
+.titlebar,
+.menu,
+.status,
+.close,
+.winbutton {
+  font-family: "Misaki Gothic", monospace;
+  font-weight: normal;
+}
+
+/* Smartphone */
+@media (max-width: 500px) {
+  body {
+    padding: 6px;
+  }
+
+  .content {
+    padding: 12px 8px;
+  }
+
+  .menu {
+    font-size: 12px;
+  }
+}

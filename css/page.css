@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #dcece9;
+  background-image:
+    linear-gradient(
+      rgba(200, 230, 240, 0.65),
+      rgba(200, 230, 240, 0.65)
+    ),
+    url("../images/cover.jpg");
+  background-repeat: repeat;
+  background-size: 600px 337.5px;
+  background-position: left top;
+  background-attachment: fixed;
+  color: #203b3c;
+  text-align: center;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 42px 16px 70px;
+}
+
+a {
+  color: #0000ee;
+}
+
+a:visited {
+  color: #551a8b;
+}
+
+/* smartphone */
+@media (max-width: 600px) {
+  body {
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-position: center top;
+  }
+}

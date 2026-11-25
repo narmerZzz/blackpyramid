@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PROFILE</title>
+<link rel="stylesheet" href="css/window.css">
+<style>
+/* Profile icon */
+.profile-icon {
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  margin: 12px auto;
+}
+
+/* Divider */
+.profile-divider {
+  max-width: 580px;
+  border: 0;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #fff;
+  margin: 16px auto;
+}
+
+/* Introduction */
+.profile-intro {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.profile-intro p {
+  white-space: pre-line;
+  line-height: 1.4;
+  margin: 4px 0;
+}
+
+/* Group box */
+.profile-group {
+  min-width: 0;
+  border: 2px groove #fff;
+  margin: 12px 0;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+.profile-group legend {
+  padding: 0 5px;
+  font-weight: bold;
+}
+
+.profile-group p {
+  margin: 0;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Checklist */
+.profile-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.profile-checklist li {
+  position: relative;
+  padding-left: 21px;
+  margin: 5px 0;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* Checkbox */
+.profile-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 13px;
+  height: 13px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 2px solid;
+  border-color: #404040 #fff #fff #404040;
+}
+
+/* Check mark */
+.profile-checklist li::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 4px;
+  height: 7px;
+  border: solid #000;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<section class="window" id="window" aria-label="プロフィールのウィンドウ">
+
+  <div class="titlebar">
+    <span>▣ PROFILE</span>
+    <button class="close" type="button" id="close"
+      aria-label="ウィンドウを閉じる">×</button>
+  </div>
+
+  <div class="menu">File　 Edit　 View　 Help</div>
+
+  <main class="content">
+
+    <img class="profile-icon"
+      src="images/icon_dot.png"
+      alt="プロフィール画像">
+
+    <hr class="profile-divider">
+
+    <div class="profile-intro">
+      <p><b>ナルメル</b></p>
+      <p>
+        長編謎解きシナリオを書いています。
+        絵も描きます。
+        PLのときはよく喋る。KPのときもよく喋る。
+        探索者は自由人が多い。PvPはあまりしない。
+        TRPGでの苦手要素は特になく、突発卓継続卓好きです。
+        SNS不精です。コールドストーンとタートルトークが怖い。
+
+        サブ垢(<a href="https://x.com/las_reso">@las_reso</a>)もあります～
+      </p>
+    </div>
+
+    <fieldset class="profile-group">
+      <legend>STYLE</legend>
+      <ul class="profile-checklist">
+        <li>システム　／　<b>CoC6版</b></li>
+        <li>セッション形式　／　<b>ボイスセッションのみ</b></li>
+        <li>KP　＜　PL　／　自由に動くのが好きなのでPLメイン。KPの場合はオリシ中心。</li>
+        <li>苦手要素特になし</li>
+        <li>新規　／　<b>2026年5月以降</b></li>
+      </ul>
+    </fieldset>
+    <fieldset class="profile-group">
+      <legend>LIKE</legend>
+      <ul class="profile-checklist">
+        <li>謎解き、パズル、脱出</li>
+        <li>Cluebox、数独</li>
+        <li>サイコホラー、クライムサスペンス</li>
+        <li>ディストピア、SF、SCP</li>
+        <li>遺跡、古代エジプト史</li>
+        <li>救いのない暗い作品</li>
+        <li>コーヒー</li>
+        <li>ねじを抜くやつ</li>
+        <li>色水ソートするやつ</li>
+      </ul>
+    </fieldset>
+    <fieldset class="profile-group">
+      <legend>※性別について</legend>
+      <p>同卓にあたり気になる方は、お手数ですが事前にご相談ください</p>
+    </fieldset>
+    <fieldset class="profile-group">
+      <legend>ご質問・お問い合わせ</legend>
+      <p><a href="https://x.com/narmerZzz">@narmerZzz</a></p>
+    </fieldset>
+    <p><a href="index.html">← 戻る</a></p>
+
+  </main>
+
+  <div class="status">PROFILE　|　NARMER</div>
+
+</section>
+
+<div id="closed" class="closed hidden">
+  <p>プロフィールを閉じました。</p>
+  <button id="reopen" class="winbutton" type="button">
+    ウィンドウを開く
+  </button>
+  <p><a href="index.html">← 戻る</a></p>
+</div>
+<script src="js/window.js"></script>
+</body>
+</html>
